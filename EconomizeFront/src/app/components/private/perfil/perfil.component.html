@@ -1,0 +1,70 @@
+<app-navbar-int></app-navbar-int>
+<p-toast position="bottom-right"></p-toast>
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-6">
+      <div class="area__perfil">
+        <div class="">
+          <img class="img__perfil" src="../../assets/img/img-perfil.png" width="165px" height="165px">
+        </div>
+        <div class="texto__perfil">
+          <h1 class="titulo__perfil">Olá, {{user.name}}!</h1>
+          <p class="paragrafo__perfil">Mude seu nome, altere sua senha ou exclua sua conta</p>
+        </div>
+      </div>
+      <div class="col-md-6 ilustracao__perfil"></div>
+    </div>
+    <div class="col-md-4">
+      <div class="dados">
+        <h1 class="titulo__dados">Meus dados</h1>
+        <form action="">
+          <div class="form__group">
+            <input class="form__control" type="text" placeholder="Nome" name="nome" required value="{{user.name}}"
+              [(ngModel)]="user.name">
+            <label class="form__label" for="nome">Nome</label>
+          </div>
+          <div class="form__group">
+            <input class="form__control" type="text" placeholder="Sobrenome" name="lastname" required
+              value="{{user.lastname}}" [(ngModel)]="user.lastname">
+            <label class="form__label" for="nome">Sobrenome</label>
+          </div>
+          <div class="form__group">
+            <input class="form__control" type="email" placeholder="E-mail" name="email" value="{{user.useremail}}"
+              [(ngModel)]="user.useremail" disabled>
+            <label class="form__label" for="email">E-mail</label>
+          </div>
+          <input class="botao__dados" type="button" value="Salvar" (click)="updateUserData()">
+        </form>
+      </div>
+      <div class="senha">
+        <h1 class="titulo__senha">Altere sua senha</h1>
+        <form>
+          <div class="form__group">
+            <input class="form__control" type="password" placeholder="Senha Atual" name="old_password"
+              [(ngModel)]="password.old_password" required>
+            <label class="form__label">Senha atual</label>
+          </div>
+          <div class="form__group">
+            <input class="form__control" type="password" placeholder="Nova senha" name="new_password"
+              [(ngModel)]="password.new_password" required>
+            <label class="form__label">Nova senha</label>
+          </div>
+          <div class="form__group">
+            <input class="form__control" type="password" placeholder="Confirmação da senha" name="confirmPassword"
+              [(ngModel)]="confirmPassword" required>
+            <label class="form__label">Confirmação da senha</label>
+          </div>
+          <input class="botao__senha" type="button" value="Alterar senha" (click)="changeUserPassword()">
+        </form>
+      </div>
+      <div class="excluir">
+        <form action="">
+          <h1 class="titulo__excluir">Exclua sua conta</h1>
+          <p class="excluir__paragrafo">Cansado de economizar e deixar suas contas em dia? Exclua sua conta</p>
+          <ngbd-modal-excluir-conta></ngbd-modal-excluir-conta>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-rodape></app-rodape>
